@@ -1,8 +1,6 @@
 <h3>Books</h3>
 <div class="book-list" *ngIf="!isLoading else load">
-    <span 
-        class="book-list-item"
-        *ngFor="let book of (books$ | async)" >
+    <span *ngFor="let book of (books$ | async)" >
         <br>
         Название: {{book.title}}<br>
         Автор: {{book.author}}<br>
