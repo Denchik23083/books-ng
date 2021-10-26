@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BookModel, BooksService } from '../services/books-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-books',
@@ -17,7 +18,7 @@ export class AddBooksComponent implements OnInit {
     publishDate: null as any
   };
 
-  constructor(private readonly service: BooksService) { }
+  constructor(private readonly service: BooksService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +28,7 @@ export class AddBooksComponent implements OnInit {
     this.service.add(newBook).subscribe(() => {
       form.resetForm();
     })
+    this.router.navigate(['/']);
   }
 
 }

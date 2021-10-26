@@ -26,4 +26,8 @@ export class BooksComponent implements OnInit {
     this.isLoading = false;
   }
 
+  remove(): void{
+    console.log("Hallo");    
+  }
+
 }
