@@ -8,6 +8,9 @@
         Страниц: {{book.pagesCount}}<br>
         Дата: {{book.publishDate}}<br>
         <div class="button">
+            <button class="foo">
+                <a routerLink="/id" class="link">Check</a>
+            </button>
             <button class="foo"><a routerLink="/update" class="link">Update</a></button>
             <button class="foo" (click)="remove(book.id!)">Remove</button>
         </div>

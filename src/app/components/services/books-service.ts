@@ -31,7 +31,7 @@ export class BooksService {
   getById(id: number): Observable<BookModel[]>{
     const getById = this.books$.value.filter(b => b.id == id)
     
-    return this.http.get<BookModel[]>(`${this.apiLink}/${id}`)
+    return this.http.get<BookModel[]>(`${this.apiLink}/id?id=${id}`)
       .pipe(
         tap(() => this.books$.next(getById))
       );

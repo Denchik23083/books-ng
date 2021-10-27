@@ -8,7 +8,6 @@ import { BookModel, BooksService } from '../services/books-service';
   styleUrls: ['./books.component.scss']
 })
 export class BooksComponent implements OnInit {
-  @Input()
   books$!: BehaviorSubject<BookModel[]>;
   
   isLoading = true;
@@ -25,6 +24,12 @@ export class BooksComponent implements OnInit {
 
     this.isLoading = false;
   }
+
+  getId(id: number): void{
+
+  }
+  // const booid = this.component.books$.value as unknown as BookModel;
+    // const id = booid.id;
 
   remove(id: number): void{
     this.service.remove(id).subscribe();
