@@ -26,8 +26,8 @@ export class BooksComponent implements OnInit {
     this.isLoading = false;
   }
 
-  remove(): void{
-    console.log("Hallo");    
+  remove(id: number): void{
+    this.service.remove(id).subscribe();
   }
 
 }

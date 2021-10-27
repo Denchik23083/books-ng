@@ -2,13 +2,14 @@
 <div class="book-list" *ngIf="!isLoading else load">
     <span *ngFor="let book of (books$ | async)" >
         <br>
+        Id: {{book.id}}<br>
         Название: {{book.title}}<br>
         Автор: {{book.author}}<br>
         Страниц: {{book.pagesCount}}<br>
         Дата: {{book.publishDate}}<br>
         <div class="button">
             <button class="foo"><a routerLink="/update" class="link">Update</a></button>
-            <button class="foo" (click)="remove()">Remove</button>
+            <button class="foo" (click)="remove(book.id!)">Remove</button>
         </div>
     </span><br>
 </div>

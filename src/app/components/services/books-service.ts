@@ -16,7 +16,7 @@ export interface BookModel{
 })
 
 export class BooksService {
-  apiLink = 'https://localhost:5001/api/books';
+  apiLink = 'https://localhost:5001/api/Books';
   books$ = new BehaviorSubject<BookModel[]>([]);
 
   constructor(private http: HttpClient) { }
@@ -28,10 +28,27 @@ export class BooksService {
       );
   }
 
+  getById(id: number): Observable<BookModel[]>{
+    const getById = this.books$.value.filter(b => b.id == id)
+    
+    return this.http.get<BookModel[]>(`${this.apiLink}/${id}`)
+      .pipe(
+        tap(() => this.books$.next(getById))
+      );
+  }
+
   add(model: BookModel): Observable<BookModel>{
     return this.http.post<BookModel>(this.apiLink, model)
       .pipe(
         tap(created => this.books$.next([...this.books$.value, created]))
       )
+  }
+
+  remove(id: number): Observable<{}>{
+    const remove = this.books$.value.filter(b => b.id !== id);
+    return this.http.delete<{}>(`${this.apiLink}/id?id=${id}`)
+      .pipe(
+        tap(() => this.books$.next(remove))
+      );
   }
 }
