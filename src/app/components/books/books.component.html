@@ -11,7 +11,7 @@
             <button class="foo">
                 <a routerLink="/id" class="link">Check</a>
             </button>
-            <button class="foo"><a routerLink="/update" class="link">Update</a></button>
+            <button class="foo" (click)="Display()">Update</button>
             <button class="foo" (click)="remove(book.id!)">Remove</button>
         </div>
     </span><br>
@@ -25,3 +25,14 @@
         <button (click)="loadData()">Load</button>
     </div>
 </ng-template>
+
+
+<form [hidden]="isDisplay" #form="ngForm" (ngSubmit)="submit(form)">
+    <h3>Update</h3>
+    <input [(ngModel)] = 'book.title' name='title'/>
+    <input [(ngModel)] = 'book.author' name='author'/>
+    <input [(ngModel)] = 'book.pagesCount' type='number' name='pagesCount'/>
+    <input [(ngModel)] = 'book.publishDate' type='date' name='publishDate'/>
+
+    <button type='submit'>Обновить</button>
+</form>

@@ -44,6 +44,17 @@ export class BooksService {
       )
   }
 
+  update(model: BookModel): Observable<{}>{
+    const updatedArr = this.books$.value
+      .map(b => b.id === model.id 
+      ? model
+      : b);
+
+    return this.http.put<{}>(`${this.apiLink}/id?id=${model.id}`, model)
+      .pipe(
+        tap(() => this.books$.next(updatedArr)));
+  }
+
   remove(id: number): Observable<{}>{
     const remove = this.books$.value.filter(b => b.id !== id);
     return this.http.delete<{}>(`${this.apiLink}/id?id=${id}`)
