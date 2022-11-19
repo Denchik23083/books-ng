@@ -9,7 +9,7 @@ import { BooksService } from './components/services/books-service';
 import { AddBooksComponent } from './components/add-books/add-books.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateBooksComponent } from './components/update-books/update-books.component';
-import { GetidBooksComponent } from './components/getid-books/getid-books.component';
+import { GetIdBooksComponent } from './components/getid-books/getid-books.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { GetidBooksComponent } from './components/getid-books/getid-books.compon
     BooksComponent,
     AddBooksComponent,
     UpdateBooksComponent,
-    GetidBooksComponent
+    GetIdBooksComponent
   ],
   imports: [
     BrowserModule,

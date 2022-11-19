@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { BookModel, BooksService } from '../services/books-service';
 
@@ -7,21 +8,16 @@ import { BookModel, BooksService } from '../services/books-service';
   templateUrl: './getid-books.component.html',
   styleUrls: ['./getid-books.component.scss']
 })
-export class GetidBooksComponent implements OnInit {
-  books$!: BehaviorSubject<BookModel[]>;
-  isLoading = true;
+export class GetIdBooksComponent implements OnInit {
+  book$ = new BehaviorSubject<BookModel | null>(null);
 
-  constructor(private service: BooksService) {
-    this.books$ = service.books$;
+  constructor(private service: BooksService, private route: ActivatedRoute) {
+    this.book$ = service.book$;
    }
 
-  ngOnInit(): void {   
-  }
-
-  getId(id: number): void {
+  ngOnInit(): void { 
+    const id = this.route.snapshot.paramMap.get('id') as any
     this.service.getById(id).subscribe();
-
-    this.isLoading = false;
   }
 
 }

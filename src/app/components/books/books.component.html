@@ -1,33 +1,21 @@
 <h3>Books</h3>
-<div class="book-list" *ngIf="!isLoading else load">
-    <span *ngFor="let book of (books$ | async)" >
-        <br>
-        Id: {{book.id}}<br>
-        Название: {{book.title}}<br>
-        Автор: {{book.author}}<br>
-        Страниц: {{book.pagesCount}}<br>
-        Дата: {{book.publishDate}}<br>
-        <div class="button">
-            <button class="foo">
-                <a routerLink="/id" class="link">Check</a>
-            </button>
-            <button class="foo" (click)="Display()">Update</button>
-            <button class="foo" (click)="remove(book.id!)">Remove</button>
-        </div>
-    </span><br>
+<div class="flex">
+    <div *ngFor="let book of (books$ | async)" class="book" (click)="Details(book.id!)">
+        <strong>Название:</strong>{{book.title}}<br>
+        <strong>Автор:</strong> {{book.author}}<br>
+        <strong>Страниц:</strong> {{book.pagesCount}}<br>
+        <strong>Дата:</strong> {{book.publishDate}}<br>
+
+        <button class="button">Update</button>
+        <button class="button" (click)="remove(book.id!)">Remove</button>
+    </div>
 </div>
 <div class="button">
     <button><a routerLink="/add" class="link">Add</a></button>
 </div>
 
-<ng-template #load>
-    <div>
-        <button (click)="loadData()">Load</button>
-    </div>
-</ng-template>
 
-
-<form [hidden]="isDisplay" #form="ngForm" (ngSubmit)="submit(form)">
+<!--<form [hidden]="isDisplay" #form="ngForm" (ngSubmit)="submit(form)">
     <h3>Update</h3>
     <input [(ngModel)] = 'book.title' name='title'/>
     <input [(ngModel)] = 'book.author' name='author'/>
@@ -35,4 +23,4 @@
     <input [(ngModel)] = 'book.publishDate' type='date' name='publishDate'/>
 
     <button type='submit'>Обновить</button>
-</form>
+</form>-->

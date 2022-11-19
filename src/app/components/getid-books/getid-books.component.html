@@ -1,21 +1,4 @@
-<div class="button">
-    <button><a routerLink="/" class="link">Back</a></button>
-</div>
-
-<div class="book-list" *ngIf="!isLoading else load">
-    <span *ngFor="let book of (books$ | async)" >
-        <br>
-        Id: {{book.id}}<br>
-        Название: {{book.title}}<br>
-        Автор: {{book.author}}<br>
-        Страниц: {{book.pagesCount}}<br>
-        Дата: {{book.publishDate}}<br>        
-    </span><br>
-</div>
-
-
-<ng-template #load>
-    <div *ngFor="let book of (books$ | async)">
-        <button (click)="getId(book.id!)">Load</button>
-    </div>
-</ng-template>
+<div *ngIf="book$ | async as book">
+    <br>
+    <h2 class="h1">{{book.title}} </h2>
+</div>  

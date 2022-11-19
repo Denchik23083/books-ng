@@ -20,24 +20,16 @@ export class BooksComponent implements OnInit {
 
   books$!: BehaviorSubject<BookModel[]>;
   
-  isLoading = true;
-  isDisplay = true;
-
   constructor(private service: BooksService, private router: Router) {
     this.books$ = service.books$;
    }
 
   ngOnInit(): void {
-  }
-
-  Display(){
-    this.isDisplay = !this.isDisplay;
-  }
-
-  loadData(): void {
     this.service.getAll().subscribe();
+  }
 
-    this.isLoading = false;
+  Details(id: number): void{  
+    this.router.navigate(['/', id]);
   }
 
   remove(id: number): void{
