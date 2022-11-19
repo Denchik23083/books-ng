@@ -1,4 +1,10 @@
-<div *ngIf="book$ | async as book">
-    <br>
-    <h2 class="h1">{{book.title}} </h2>
+<a href="/">
+    <button class="button">Back</button>
+</a> 
+
+<div *ngIf="book$ | async as book" class="bookId">
+    <strong>Название:</strong> {{book.title}}<br>
+    <strong>Автор:</strong> {{book.author}}<br>
+    <strong>Страниц:</strong> {{book.pagesCount}}<br>
+    <strong>Дата:</strong> {{book.publishDate | date:'medium'}}<br>
 </div>  

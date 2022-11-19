@@ -1,18 +1,16 @@
-<h3>Books</h3>
+<h1>Books</h1>
 <div class="flex">
     <div *ngFor="let book of (books$ | async)" class="book" (click)="Details(book.id!)">
-        <strong>Название:</strong>{{book.title}}<br>
+        <strong>Название:</strong> {{book.title}}<br>
         <strong>Автор:</strong> {{book.author}}<br>
         <strong>Страниц:</strong> {{book.pagesCount}}<br>
-        <strong>Дата:</strong> {{book.publishDate}}<br>
+        <strong>Дата:</strong> {{book.publishDate | date:'medium'}}<br>
 
         <button class="button">Update</button>
         <button class="button" (click)="remove(book.id!)">Remove</button>
     </div>
 </div>
-<div class="button">
-    <button><a routerLink="/add" class="link">Add</a></button>
-</div>
+<button class="button">Add</button>
 
 
 <!--<form [hidden]="isDisplay" #form="ngForm" (ngSubmit)="submit(form)">

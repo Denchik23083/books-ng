@@ -23,7 +23,7 @@ import { GetIdBooksComponent } from './components/getid-books/getid-books.compon
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [BooksService],
   bootstrap: [AppComponent]
