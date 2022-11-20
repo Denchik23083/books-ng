@@ -24,41 +24,30 @@ export class BooksService {
 
   getAll(): Observable<BookModel[]>{
     return this.http.get<BookModel[]>(this.apiLink)
-      .pipe(
-        tap(books => this.books$.next(books))
-      );
+      .pipe(tap(books => this.books$.next(books)));
   }
 
   getById(id: number): Observable<BookModel>{    
     return this.http.get<BookModel>(`${this.apiLink}/id?id=${id}`)
-      .pipe(
-        tap(book => this.book$.next(book))
-      );
+      .pipe(tap(book => this.book$.next(book)));
   }
 
   add(model: BookModel): Observable<BookModel>{
     return this.http.post<BookModel>(this.apiLink, model)
-      .pipe(
-        tap(created => this.books$.next([...this.books$.value, created]))
-      )
+      .pipe(tap(created => this.books$.next([...this.books$.value, created])));
   }
 
-  update(model: BookModel): Observable<{}>{
-    const updatedArr = this.books$.value
-      .map(b => b.id === model.id 
-      ? model
-      : b);
+  update(model: BookModel, id: number): Observable<{}>{
+    const update = this.books$.value.filter(b => b.id !== id);
 
-    return this.http.put<{}>(`${this.apiLink}/id?id=${model.id}`, model)
-      .pipe(
-        tap(() => this.books$.next(updatedArr)));
+    return this.http.put<{}>(`${this.apiLink}/id?id=${id}`, model)
+      .pipe(tap(() => this.books$.next(update)));
   }
 
   remove(id: number): Observable<{}>{
     const remove = this.books$.value.filter(b => b.id !== id);
+
     return this.http.delete<{}>(`${this.apiLink}/id?id=${id}`)
-      .pipe(
-        tap(() => this.books$.next(remove))
-      );
+      .pipe(tap(() => this.books$.next(remove)));
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookModel, BooksService } from '../services/books-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -10,6 +11,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./update-books.component.scss']
 })
 export class UpdateBooksComponent implements OnInit {
+  
+  book$ = new BehaviorSubject<BookModel | null>(null);
 
   book: BookModel = {
     title: '',
@@ -18,7 +21,9 @@ export class UpdateBooksComponent implements OnInit {
     publishDate: new Date
   };
 
-  constructor(private readonly service: BooksService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private readonly service: BooksService, private activatedRoute: ActivatedRoute, private router: Router) { 
+    this.book$ = service.book$;
+  }
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id') as any
@@ -27,14 +32,17 @@ export class UpdateBooksComponent implements OnInit {
   
   submit(form: NgForm): void {
     const updateBook = form.value as BookModel;
-    this.service.update(updateBook).subscribe(() => {
+    const id = this.activatedRoute.snapshot.paramMap.get('id') as any
+    this.service.update(updateBook, id).subscribe(() => {
       form.resetForm();
     })
-    this.router.navigate(['/']);
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
+    });
   }
 
   route(): void {
-    this.router.navigate(["/"]);
+    this.router.navigate(['/']);
   }
 
 }

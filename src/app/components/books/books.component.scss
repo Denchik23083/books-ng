@@ -5,7 +5,8 @@
 }
 .link{
     text-decoration: none;
-    color: black;
+    color: lightskyblue;
+    cursor: pointer;
 }
 .book{
     border: 1px solid black;
@@ -14,7 +15,6 @@
     margin: 10px 10px 10px 0px;
     font-size: 20px;
 }
-.book:hover{ cursor: pointer; }
 .flex{
     display: flex;
     flex-wrap: wrap;

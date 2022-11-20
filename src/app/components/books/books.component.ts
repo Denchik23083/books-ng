@@ -14,12 +14,16 @@ export class BooksComponent implements OnInit {
   books$!: BehaviorSubject<BookModel[]>;
   
   constructor(private service: BooksService, private router: Router) {
-    this.books$ = service.books$;
-   }
+    this.books$ = service.books$;    
+  }
 
-  ngOnInit(): void { this.service.getAll().subscribe(); }
+  ngOnChanges(): void{
+    this.service.getAll().subscribe(); 
+  }
 
-  ngOnChanges(): void{ this.service.getAll().subscribe(); }
+  ngOnInit(): void{ 
+    this.service.getAll().subscribe(); 
+  }
 
   details(id: number): void{ this.router.navigate(['/', id]); }
 

@@ -28,7 +28,9 @@ export class AddBooksComponent implements OnInit {
     this.service.add(newBook).subscribe(() => {
       form.resetForm();
     })
-    this.router.navigate(["/"]);
+    this.router.navigate(["/"]).then(() => {
+      window.location.reload();
+    });
   }
 
   route(): void {
