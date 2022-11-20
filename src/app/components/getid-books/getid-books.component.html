@@ -1,6 +1,4 @@
-<a href="/">
-    <button class="button">Back</button>
-</a> 
+<button class="button" (click)="route()">Back</button>
 
 <div *ngIf="book$ | async as book" class="bookId">
     <strong>Название:</strong> {{book.title}}<br>

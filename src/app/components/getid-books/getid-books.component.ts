@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { BookModel, BooksService } from '../services/books-service';
 
@@ -11,12 +11,16 @@ import { BookModel, BooksService } from '../services/books-service';
 export class GetIdBooksComponent implements OnInit {
   book$ = new BehaviorSubject<BookModel | null>(null);
 
-  constructor(private service: BooksService, private router: ActivatedRoute) {
+  constructor(private service: BooksService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.book$ = service.book$;
    }
 
   ngOnInit(): void { 
-    const id = this.router.snapshot.paramMap.get('id') as any
+    const id = this.activatedRoute.snapshot.paramMap.get('id') as any
     this.service.getById(id).subscribe();
+  }
+
+  route(): void {
+    this.router.navigate(["/"]);
   }
 }

@@ -15,7 +15,7 @@ export class AddBooksComponent implements OnInit {
     title: '',
     author: '',
     pagesCount: 0,
-    publishDate: null as any
+    publishDate: new Date
   };
 
   constructor(private readonly service: BooksService, private router: Router) { }
@@ -28,7 +28,11 @@ export class AddBooksComponent implements OnInit {
     this.service.add(newBook).subscribe(() => {
       form.resetForm();
     })
-    this.router.navigate(['/']);
+    this.router.navigate(["/"]);
+  }
+
+  route(): void {
+    this.router.navigate(["/"]);
   }
 
 }

@@ -1,24 +1,13 @@
 <h1>Books</h1>
 <div class="flex">
-    <div *ngFor="let book of (books$ | async)" class="book" (click)="Details(book.id!)">
+    <div *ngFor="let book of (books$ | async)" class="book" (click)="details(book.id!)">
         <strong>Название:</strong> {{book.title}}<br>
         <strong>Автор:</strong> {{book.author}}<br>
         <strong>Страниц:</strong> {{book.pagesCount}}<br>
         <strong>Дата:</strong> {{book.publishDate | date:'medium'}}<br>
 
-        <button class="button">Update</button>
+        <button class="button" (click)="routeUpdate(book.id!)">Update</button>
         <button class="button" (click)="remove(book.id!)">Remove</button>
     </div>
 </div>
-<button class="button">Add</button>
-
-
-<!--<form [hidden]="isDisplay" #form="ngForm" (ngSubmit)="submit(form)">
-    <h3>Update</h3>
-    <input [(ngModel)] = 'book.title' name='title'/>
-    <input [(ngModel)] = 'book.author' name='author'/>
-    <input [(ngModel)] = 'book.pagesCount' type='number' name='pagesCount'/>
-    <input [(ngModel)] = 'book.publishDate' type='date' name='publishDate'/>
-
-    <button type='submit'>Обновить</button>
-</form>-->
+<button class="button" (click)="routeAdd()">Add</button>

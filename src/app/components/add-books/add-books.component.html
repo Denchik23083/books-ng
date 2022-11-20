@@ -1,13 +1,11 @@
-<div class="button">
-    <button><a routerLink="/" class="link">Back</a></button>
-</div>
+<button class="button" (click)="route()">Back</button>
 
 <form #form="ngForm" (ngSubmit)="submit(form)">
-    <h3>Add</h3>
-    <input [(ngModel)] = 'book.title' name='title'/>
-    <input [(ngModel)] = 'book.author' name='author'/>
-    <input [(ngModel)] = 'book.pagesCount' type='number' name='pagesCount'/>
-    <input [(ngModel)] = 'book.publishDate' type='date' name='publishDate'/>
+    <h1>Add</h1>
+    <input [(ngModel)] = 'book.title' name="title" placeholder="title"/>
+    <input [(ngModel)] = 'book.author' name="author" placeholder="author"/>
+    <input [(ngModel)] = 'book.pagesCount' type='number' name="pagesCount" placeholder="pagesCount"/>
+    <input [(ngModel)] = 'book.publishDate' type='date' name="publishDate" placeholder="publishDate"/>
 
-    <button type='submit'>Добавить</button>
+    <button type='submit' class="button">Add</button>
 </form>

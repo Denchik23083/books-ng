@@ -14,7 +14,8 @@
     margin: 10px 10px 10px 0px;
     font-size: 20px;
 }
+.book:hover{ cursor: pointer; }
 .flex{
     display: flex;
-    align-items: stretch;
+    flex-wrap: wrap;
 }

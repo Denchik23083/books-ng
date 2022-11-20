@@ -10,13 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./books.component.scss']
 })
 export class BooksComponent implements OnInit {
-  
-  book: BookModel = {
-    title: '',
-    author: '',
-    pagesCount: 0,
-    publishDate: null as any
-  };
 
   books$!: BehaviorSubject<BookModel[]>;
   
@@ -24,23 +17,17 @@ export class BooksComponent implements OnInit {
     this.books$ = service.books$;
    }
 
-  ngOnInit(): void {
-    this.service.getAll().subscribe();
-  }
+  ngOnInit(): void { this.service.getAll().subscribe(); }
 
-  Details(id: number): void{  
-    this.router.navigate(['/', id]);
-  }
+  ngOnChanges(): void{ this.service.getAll().subscribe(); }
+
+  details(id: number): void{ this.router.navigate(['/', id]); }
+
+  routeAdd(): void{ this.router.navigate(['/add']); }
+
+  routeUpdate(id: number): void{ this.router.navigate(['/update', id]); }
 
   remove(id: number): void{
     this.service.remove(id).subscribe();
-  }
-
-  submit(form: NgForm): void {
-    const updateBook = form.value as BookModel;
-    this.service.update(updateBook).subscribe(() => {
-      form.resetForm();
-    })
-    this.router.navigate(['/']);
   }
 }
