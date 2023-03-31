@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { BookModel, BooksService } from '../../services/books.service';
+import { BookModel, BooksService } from '../../../services/books.service';
 
 @Component({
   selector: 'app-getid-books',

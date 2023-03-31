@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { BookModel, BooksService } from '../../services/books.service';
+import { BookModel, BooksService } from '../../../services/books.service';
 import { Router } from '@angular/router';
 
 @Component({

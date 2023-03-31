@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BookModel, BooksService } from '../../services/books.service';
+import { BookModel, BooksService } from '../../../services/books.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
