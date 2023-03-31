@@ -4,20 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
-import { BooksComponent } from './components/books/books.component';
 import { BooksService } from './services/books.service';
 import { AddBooksComponent } from './components/add-books/add-books.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateBooksComponent } from './components/update-books/update-books.component';
 import { GetIdBooksComponent } from './components/getid-books/getid-books.component';
+import { AllBooksComponent } from './components/all-books/all-books.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BooksComponent,
     AddBooksComponent,
     UpdateBooksComponent,
-    GetIdBooksComponent
+    GetIdBooksComponent,
+    AllBooksComponent
   ],
   imports: [
     BrowserModule,

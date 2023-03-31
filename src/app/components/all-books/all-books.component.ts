@@ -4,11 +4,11 @@ import { BookModel, BooksService } from '../../services/books.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-books',
-  templateUrl: './books.component.html',
-  styleUrls: ['./books.component.scss']
+  selector: 'app-all-books',
+  templateUrl: './all-books.component.html',
+  styleUrls: ['./all-books.component.scss']
 })
-export class BooksComponent implements OnInit {
+export class AllBooksComponent implements OnInit {
 
   books$!: BehaviorSubject<BookModel[]>;
   
@@ -33,4 +33,5 @@ export class BooksComponent implements OnInit {
   remove(id: number): void{
     this.service.remove(id).subscribe();
   }
+
 }
