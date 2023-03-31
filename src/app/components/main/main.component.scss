@@ -1,0 +1,27 @@
+.block1, .block2{
+    display: inline-block;
+    border: 3px solid black;
+    height: 600px;
+    width: 600px;
+    border-radius: 20px;
+    vertical-align: top;
+    text-align: center;
+    margin: 10px;    
+}
+.block1{
+    background: url("/assets/books.jpg") no-repeat;
+    background-size: cover;
+}
+.block2{
+    background: url("/assets/categories.jpg") no-repeat;
+    background-size: cover;
+}
+.block1:hover, .block2:hover{
+    transition: 1s ease-in;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.h1{
+    text-align: center; 
+    color: white;
+}

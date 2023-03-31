@@ -24,11 +24,21 @@ export class AllBooksComponent implements OnInit {
     this.service.getAll().subscribe(); 
   }
 
-  details(id: number): void{ this.router.navigate(['/', id]); }
+  routeMain(): void {
+    this.router.navigate(['/']); 
+  }
 
-  routeAdd(): void{ this.router.navigate(['/add']); }
+  details(id: number): void{ 
+    this.router.navigate(['/books', id]); 
+  }
 
-  routeUpdate(id: number): void{ this.router.navigate(['/update', id]); }
+  routeAdd(): void{ 
+    this.router.navigate(['/books/add']); 
+  }
+
+  routeUpdate(id: number): void{ 
+    this.router.navigate([`/books/${id}/edit`]); 
+  }
 
   remove(id: number): void{
     this.service.remove(id).subscribe();

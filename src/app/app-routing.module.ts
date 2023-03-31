@@ -4,12 +4,14 @@ import { AddBooksComponent } from './components/books/add-books/add-books.compon
 import { AllBooksComponent } from './components/books/all-books/all-books.component';
 import { GetIdBooksComponent } from './components/books/getid-books/getid-books.component';
 import { UpdateBooksComponent } from './components/books/update-books/update-books.component';
+import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
-  { path: '', component: AllBooksComponent},
-  { path: 'add', component: AddBooksComponent },
-  { path: 'update/:id', component: UpdateBooksComponent },
-  { path: ':id', component: GetIdBooksComponent },
+  { path: '', component: MainComponent },
+  { path: 'books', component: AllBooksComponent},
+  { path: 'books/add', component: AddBooksComponent },
+  { path: 'books/:id/edit', component: UpdateBooksComponent },
+  { path: 'books/:id', component: GetIdBooksComponent },
 ];
 
 @NgModule({

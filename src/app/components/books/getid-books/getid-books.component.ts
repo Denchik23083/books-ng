@@ -21,6 +21,6 @@ export class GetIdBooksComponent implements OnInit {
   }
 
   route(): void {
-    this.router.navigate(["/"]);
+    this.router.navigate(["/books"]);
   }
 }

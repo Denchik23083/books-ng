@@ -36,13 +36,13 @@ export class UpdateBooksComponent implements OnInit {
     this.service.update(updateBook, id).subscribe(() => {
       form.resetForm();
     })
-    this.router.navigate(['/']).then(() => {
+    this.router.navigate(['/books']).then(() => {
       window.location.reload();
     });
   }
 
   route(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/books']);
   }
 
 }
