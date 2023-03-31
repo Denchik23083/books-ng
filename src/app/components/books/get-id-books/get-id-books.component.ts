@@ -4,11 +4,12 @@ import { BehaviorSubject } from 'rxjs';
 import { BookModel, BooksService } from '../../../services/books.service';
 
 @Component({
-  selector: 'app-getid-books',
-  templateUrl: './getid-books.component.html',
-  styleUrls: ['./getid-books.component.scss']
+  selector: 'app-get-id-books',
+  templateUrl: './get-id-books.component.html',
+  styleUrls: ['./get-id-books.component.scss']
 })
 export class GetIdBooksComponent implements OnInit {
+
   book$ = new BehaviorSubject<BookModel | null>(null);
 
   constructor(private service: BooksService, private activatedRoute: ActivatedRoute, private router: Router) {
@@ -23,4 +24,5 @@ export class GetIdBooksComponent implements OnInit {
   route(): void {
     this.router.navigate(["/books"]);
   }
+
 }
