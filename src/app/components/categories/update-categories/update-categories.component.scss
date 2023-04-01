@@ -1,0 +1,30 @@
+.button{
+    width: 100px;
+    height: 30px;
+    margin: 10px 10px 10px 0px;
+}
+.button:hover{
+    cursor: pointer;
+}
+input{
+    padding: 5px;
+    margin: 10px 10px 10px 0px;
+}
+.categoryId{
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+.category{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 10px 10px 0px;
+    font-size: 20px;
+}
