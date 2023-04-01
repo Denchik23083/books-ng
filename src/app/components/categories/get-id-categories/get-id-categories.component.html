@@ -1,1 +1,16 @@
-<p>get-id-categories works!</p>
+<button class="button" (click)="route()">Back</button>
+
+<div *ngIf="category$ | async as category" class="categoryId">
+    <strong>Название:</strong> {{category.description}}<br>
+</div>
+
+<div *ngIf="category$ | async as category">
+    <div class="flex">
+        <div *ngFor="let book of category.books" class="category" >
+            <strong>Название:</strong> {{book.title}}<br>
+            <strong>Автор:</strong> {{book.author}}<br>
+            <strong>Страниц:</strong> {{book.pagesCount}}<br>
+            <strong>Дата:</strong> {{book.publishDate | date:'medium'}}<br>
+        </div>
+    </div>
+</div>

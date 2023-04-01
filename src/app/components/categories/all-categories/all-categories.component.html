@@ -1,1 +1,11 @@
-<p>all-categories works!</p>
+<h1>Categories</h1>
+<button class="button" (click)="routeMain()">Main</button>
+<div class="flex">
+    <div *ngFor="let category of (categories$ | async)" class="category" >
+        <strong>Описание:</strong><span (click)="details(category.id!)" class="link"> {{category.description}}</span><br>
+        <strong>Количество учебников:</strong><span> {{category.books.length}}</span><br>
+        <button class="button" (click)="routeUpdate(category.id!)">Update</button>
+        <button class="button" (click)="remove(category.id!)">Remove</button>
+    </div>
+</div>
+<button class="button" (click)="routeAdd()">Add</button>

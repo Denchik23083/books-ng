@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { CategoriesService, CategoryModel } from 'src/app/services/categories.service';
 
 @Component({
   selector: 'app-get-id-categories',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GetIdCategoriesComponent implements OnInit {
 
-  constructor() { }
+  category$ = new BehaviorSubject<CategoryModel | null>(null);
 
-  ngOnInit(): void {
+  constructor(private service: CategoriesService, private activatedRoute: ActivatedRoute, private router: Router) {
+    this.category$ = service.category$;
+   }
+
+  ngOnInit(): void { 
+    const id = this.activatedRoute.snapshot.paramMap.get('id') as any
+    this.service.getById(id).subscribe();
+  }
+
+  route(): void {
+    this.router.navigate(['/categories']);
   }
 
 }

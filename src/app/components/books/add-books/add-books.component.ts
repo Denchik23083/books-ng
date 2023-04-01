@@ -28,13 +28,13 @@ export class AddBooksComponent implements OnInit {
     this.service.add(newBook).subscribe(() => {
       form.resetForm();
     })
-    this.router.navigate(["/books"]).then(() => {
+    this.router.navigate(['/books']).then(() => {
       window.location.reload();
     });
   }
 
   route(): void {
-    this.router.navigate(["/books"]);
+    this.router.navigate(['/books']);
   }
 
 }

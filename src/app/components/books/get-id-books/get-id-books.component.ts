@@ -22,7 +22,7 @@ export class GetIdBooksComponent implements OnInit {
   }
 
   route(): void {
-    this.router.navigate(["/books"]);
+    this.router.navigate(['/books']);
   }
 
 }
