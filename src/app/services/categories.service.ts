@@ -31,7 +31,6 @@ export class CategoriesService {
   }
 
   add(model: CategoryModel): Observable<CategoryModel>{
-    debugger;
     return this.http.post<CategoryModel>(this.apiLink, model)
       .pipe(tap(created => this.categories$.next([...this.categories$.value, created])));
   }

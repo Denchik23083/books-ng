@@ -22,7 +22,6 @@ export class AddCategoriesComponent implements OnInit {
   }
 
   submit(form: NgForm): void {
-    debugger;
     const newCategory = form.value as CategoryModel;
     this.service.add(newCategory).subscribe(() => {
       form.resetForm();
