@@ -8,7 +8,8 @@ export interface BookModel{
   title: string,
   author: string,
   pagesCount: number,
-  publishDate: Date
+  publishDate: Date,
+  categoryId: number
 }
 
 @Injectable({
@@ -17,37 +18,26 @@ export interface BookModel{
 
 export class BooksService {
   apiLink = 'https://localhost:5001/api/Books';
-  books$ = new BehaviorSubject<BookModel[]>([]);
-  book$ = new BehaviorSubject<BookModel | null>(null);
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<BookModel[]>{
-    return this.http.get<BookModel[]>(this.apiLink)
-      .pipe(tap(books => this.books$.next(books)));
+  getAll(){
+    return this.http.get<BookModel[]>(this.apiLink);
   }
 
-  getById(id: number): Observable<BookModel>{    
-    return this.http.get<BookModel>(`${this.apiLink}/id?id=${id}`)
-      .pipe(tap(book => this.book$.next(book)));
+  getById(id: number){    
+    return this.http.get<BookModel>(`${this.apiLink}/id?id=${id}`);
   }
 
-  add(model: BookModel): Observable<BookModel>{
-    return this.http.post<BookModel>(this.apiLink, model)
-      .pipe(tap(created => this.books$.next([...this.books$.value, created])));
+  add(model: BookModel){
+    return this.http.post<BookModel>(this.apiLink, model);
   }
 
-  update(model: BookModel, id: number): Observable<{}>{
-    const update = this.books$.value.filter(b => b.id !== id);
-
-    return this.http.put<{}>(`${this.apiLink}/id?id=${id}`, model)
-      .pipe(tap(() => this.books$.next(update)));
+  update(model: BookModel, id: number){
+    return this.http.put<{}>(`${this.apiLink}/id?id=${id}`, model);
   }
 
-  remove(id: number): Observable<{}>{
-    const remove = this.books$.value.filter(b => b.id !== id);
-
-    return this.http.delete<{}>(`${this.apiLink}/id?id=${id}`)
-      .pipe(tap(() => this.books$.next(remove)));
+  remove(id: number){
+    return this.http.delete<{}>(`${this.apiLink}/id?id=${id}`);
   }
 }

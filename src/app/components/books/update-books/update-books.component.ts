@@ -11,18 +11,16 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./update-books.component.scss']
 })
 export class UpdateBooksComponent implements OnInit {
-  
-  book$ = new BehaviorSubject<BookModel | null>(null);
-
   book: BookModel = {
     title: '',
     author: '',
     pagesCount: 0,
-    publishDate: new Date
+    publishDate: new Date,
+    categoryId: 0
   };
 
   constructor(private readonly service: BooksService, private activatedRoute: ActivatedRoute, private router: Router) { 
-    this.book$ = service.book$;
+    
   }
 
   ngOnInit(): void {

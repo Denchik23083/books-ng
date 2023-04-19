@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { BookModel, BooksService } from '../../../services/books.service';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-all-books',
@@ -10,18 +11,12 @@ import { Router } from '@angular/router';
 })
 export class AllBooksComponent implements OnInit {
 
-  books$!: BehaviorSubject<BookModel[]>;
+  books: BookModel[] = [];
   
-  constructor(private service: BooksService, private router: Router) {
-    this.books$ = service.books$;    
-  }
-
-  ngOnChanges(): void{
-    this.service.getAll().subscribe(); 
-  }
+  constructor(private service: BooksService, private router: Router) { }
 
   ngOnInit(): void{ 
-    this.service.getAll().subscribe(); 
+    this.service.getAll().subscribe(books => this.books = books);
   }
 
   routeMain(): void {

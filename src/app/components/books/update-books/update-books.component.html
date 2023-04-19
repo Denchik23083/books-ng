@@ -1,6 +1,6 @@
 <button class="button" (click)="route()">Back</button>
 
-<div *ngIf="book$ | async as book" class="bookId">
+<div *ngIf="book as book" class="bookId">
     <strong>Название:</strong> {{book.title}}<br>
     <strong>Автор:</strong> {{book.author}}<br>
     <strong>Страниц:</strong> {{book.pagesCount}}<br>

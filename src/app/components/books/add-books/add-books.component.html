@@ -6,6 +6,8 @@
     <input [(ngModel)] = 'book.author' name="author" placeholder="author"/>
     <input [(ngModel)] = 'book.pagesCount' type='number' name="pagesCount" placeholder="pagesCount"/>
     <input [(ngModel)] = 'book.publishDate' type='date' name="publishDate" placeholder="publishDate"/>
-
+    <!--<select [(ngModel)] = "categoryId">
+        <option *ngFor="let category of (categories$ | async)" [ngValue]="category">{{category.description}}</option>
+    </select>-->
     <button type='submit' class="button">Add</button>
 </form>
