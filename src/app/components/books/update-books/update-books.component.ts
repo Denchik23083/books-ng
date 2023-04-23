@@ -11,6 +11,7 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./update-books.component.scss']
 })
 export class UpdateBooksComponent implements OnInit {
+  
   book: BookModel = {
     title: '',
     author: '',
@@ -19,13 +20,12 @@ export class UpdateBooksComponent implements OnInit {
     categoryId: 0
   };
 
-  constructor(private readonly service: BooksService, private activatedRoute: ActivatedRoute, private router: Router) { 
-    
-  }
+  constructor(private readonly service: BooksService, private activatedRoute: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id') as any
-    this.service.getById(id).subscribe();
+    this.service.getById(id)
+      .subscribe(book => this.book = book);
   } 
   
   submit(form: NgForm): void {

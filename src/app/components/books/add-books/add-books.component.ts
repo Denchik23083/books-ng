@@ -34,7 +34,6 @@ export class AddBooksComponent implements OnInit {
   }
 
   submit(form: NgForm): void {
-    debugger;
     const newBook = form.value as BookModel;
     this.service.add(newBook).subscribe(() => {
       form.resetForm();

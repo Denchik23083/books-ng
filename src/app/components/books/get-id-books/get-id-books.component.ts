@@ -9,11 +9,10 @@ import { BookModel, BooksService } from '../../../services/books.service';
   styleUrls: ['./get-id-books.component.scss']
 })
 export class GetIdBooksComponent implements OnInit {
+  
   book!: BookModel;
 
-  constructor(private service: BooksService, private activatedRoute: ActivatedRoute, private router: Router) {
-   
-  }
+  constructor(private service: BooksService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void { 
     const id = this.activatedRoute.snapshot.paramMap.get('id') as any

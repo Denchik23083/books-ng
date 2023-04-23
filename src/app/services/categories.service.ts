@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 import { BookModel } from './books.service';
 
 export interface CategoryModel{
@@ -20,32 +19,23 @@ export class CategoriesService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<CategoryModel[]>{
-    return this.http.get<CategoryModel[]>(this.apiLink)
-      .pipe(tap(categories => this.categories$.next(categories)));
+  getAll(){
+    return this.http.get<CategoryModel[]>(this.apiLink);
   }
 
-  getById(id: number): Observable<CategoryModel>{    
-    return this.http.get<CategoryModel>(`${this.apiLink}/id?id=${id}`)
-      .pipe(tap(category => this.category$.next(category)));
+  getById(id: number){    
+    return this.http.get<CategoryModel>(`${this.apiLink}/id?id=${id}`);
   }
 
-  add(model: CategoryModel): Observable<CategoryModel>{
-    return this.http.post<CategoryModel>(this.apiLink, model)
-      .pipe(tap(created => this.categories$.next([...this.categories$.value, created])));
+  add(model: CategoryModel){
+    return this.http.post<CategoryModel>(this.apiLink, model);
   }
 
-  update(model: CategoryModel, id: number): Observable<{}>{
-    const update = this.categories$.value.filter(b => b.id !== id);
-
-    return this.http.put<{}>(`${this.apiLink}/id?id=${id}`, model)
-      .pipe(tap(() => this.categories$.next(update)));
+  update(model: CategoryModel, id: number){
+    return this.http.put<{}>(`${this.apiLink}/id?id=${id}`, model);
   }
 
-  remove(id: number): Observable<{}>{
-    const remove = this.categories$.value.filter(b => b.id !== id);
-
-    return this.http.delete<{}>(`${this.apiLink}/id?id=${id}`)
-      .pipe(tap(() => this.categories$.next(remove)));
+  remove(id: number){
+    return this.http.delete<{}>(`${this.apiLink}/id?id=${id}`);
   }
 }

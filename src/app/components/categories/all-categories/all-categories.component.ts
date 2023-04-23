@@ -10,18 +10,12 @@ import { CategoriesService, CategoryModel } from 'src/app/services/categories.se
 })
 export class AllCategoriesComponent implements OnInit {
 
-  categories$!: BehaviorSubject<CategoryModel[]>;
+  categories: CategoryModel[] = [];
   
-  constructor(private service: CategoriesService, private router: Router) {
-    this.categories$ = service.categories$;    
-  }
-
-  ngOnChanges(): void{
-    this.service.getAll().subscribe(); 
-  }
+  constructor(private service: CategoriesService, private router: Router) { }
 
   ngOnInit(): void{ 
-    this.service.getAll().subscribe(); 
+    this.service.getAll().subscribe(categories => this.categories = categories); 
   }
 
   routeMain(): void {
@@ -41,7 +35,10 @@ export class AllCategoriesComponent implements OnInit {
   }
 
   remove(id: number): void{
-    this.service.remove(id).subscribe();
+    this.service.remove(id)
+      .subscribe(() => {
+        window.location.reload();
+      });
   }
 
 }

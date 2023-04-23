@@ -25,10 +25,9 @@ export class AddCategoriesComponent implements OnInit {
     const newCategory = form.value as CategoryModel;
     this.service.add(newCategory).subscribe(() => {
       form.resetForm();
-    })
-    this.router.navigate(['/categories']).then(() => {
       window.location.reload();
-    });
+    })
+    this.router.navigate(['/categories']);
   }
 
   route(): void {

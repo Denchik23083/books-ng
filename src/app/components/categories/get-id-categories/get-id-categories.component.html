@@ -1,10 +1,10 @@
 <button class="button" (click)="route()">Back</button>
 
-<div *ngIf="category$ | async as category" class="categoryId">
+<div *ngIf="category as category" class="categoryId">
     <strong>Название:</strong> {{category.description}}<br>
 </div>
 
-<div *ngIf="category$ | async as category">
+<div *ngIf="category as category">
     <div class="flex">
         <div *ngFor="let book of category.books" class="category" >
             <strong>Название:</strong> {{book.title}}<br>

@@ -16,15 +16,12 @@ export class UpdateCategoriesComponent implements OnInit {
     books: []
   };
 
-  category$ = new BehaviorSubject<CategoryModel | null>(null);
-
-  constructor(private service: CategoriesService, private activatedRoute: ActivatedRoute, private router: Router) {
-    this.category$ = service.category$;
-   }
+  constructor(private service: CategoriesService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void { 
     const id = this.activatedRoute.snapshot.paramMap.get('id') as any
-    this.service.getById(id).subscribe();
+    this.service.getById(id)
+      .subscribe(category => this.category = category);
   }
 
   route(): void {
@@ -33,12 +30,12 @@ export class UpdateCategoriesComponent implements OnInit {
 
   submit(form: NgForm): void {
     const updateCategory = form.value as CategoryModel;
-    this.service.add(updateCategory).subscribe(() => {
+    const id = this.activatedRoute.snapshot.paramMap.get('id') as any
+    this.service.update(updateCategory, id).subscribe(() => {
       form.resetForm();
-    })
-    this.router.navigate(['/categories']).then(() => {
       window.location.reload();
-    });
+    })
+    this.router.navigate(['/categories']);
   }
 
 }

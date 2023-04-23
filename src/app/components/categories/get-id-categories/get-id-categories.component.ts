@@ -10,15 +10,14 @@ import { CategoriesService, CategoryModel } from 'src/app/services/categories.se
 })
 export class GetIdCategoriesComponent implements OnInit {
 
-  category$ = new BehaviorSubject<CategoryModel | null>(null);
+  category!: CategoryModel;
 
-  constructor(private service: CategoriesService, private activatedRoute: ActivatedRoute, private router: Router) {
-    this.category$ = service.category$;
-   }
+  constructor(private service: CategoriesService, private activatedRoute: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void { 
     const id = this.activatedRoute.snapshot.paramMap.get('id') as any
-    this.service.getById(id).subscribe();
+    this.service.getById(id)
+      .subscribe(category => this.category = category);
   }
 
   route(): void {
