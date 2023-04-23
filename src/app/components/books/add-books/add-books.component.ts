@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BookModel, BooksService } from '../../../services/books.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
 import { CategoriesService, CategoryModel } from 'src/app/services/categories.service';
 
 @Component({
@@ -21,26 +20,22 @@ export class AddBooksComponent implements OnInit {
     categoryId: 0
   };
 
-  category = new BehaviorSubject<CategoryModel | null>(null);
+  categories: CategoryModel[] = [];
 
-  categories$!: BehaviorSubject<CategoryModel[]>;
-
-  constructor(private readonly service: BooksService, private categoriesService: CategoriesService, private router: Router) { 
-    this.categories$ = categoriesService.categories$;
-  }
+  constructor(private readonly service: BooksService, private categoriesService: CategoriesService, private router: Router) {}
 
   ngOnInit(): void {
-    this.categoriesService.getAll().subscribe(); 
+    this.categoriesService.getAll()
+      .subscribe(categories => this.categories = categories); 
   }
 
   submit(form: NgForm): void {
     const newBook = form.value as BookModel;
     this.service.add(newBook).subscribe(() => {
       form.resetForm();
-    })
-    this.router.navigate(['/books']).then(() => {
       window.location.reload();
-    });
+    })
+    this.router.navigate(['/books']);
   }
 
   route(): void {

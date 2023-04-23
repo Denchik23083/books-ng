@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { BookModel, BooksService } from '../../../services/books.service';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-all-books',
@@ -36,7 +34,10 @@ export class AllBooksComponent implements OnInit {
   }
 
   remove(id: number): void{
-    this.service.remove(id).subscribe();
+    this.service.remove(id)
+      .subscribe(() => {
+        window.location.reload();
+      });
   }
 
 }

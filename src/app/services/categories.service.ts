@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
 import { BookModel } from './books.service';
 
 export interface CategoryModel{
@@ -14,8 +13,6 @@ export interface CategoryModel{
 })
 export class CategoriesService {
   apiLink = 'https://localhost:5001/api/Categories';
-  categories$ = new BehaviorSubject<CategoryModel[]>([]);
-  category$ = new BehaviorSubject<CategoryModel | null>(null);
 
   constructor(private http: HttpClient) { }
 
