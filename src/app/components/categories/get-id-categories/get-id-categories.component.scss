@@ -17,10 +17,22 @@
     display: flex;
     flex-wrap: wrap;
 }
-.category{
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px 10px 10px 0px;
-    font-size: 20px;
+.book{
+    background-color: white; 
+    margin: 20px;
+    margin-left: 0px;
+    text-align: center; 
+    padding-top: 50px; 
+    border: 0.1px solid grey; 
+    border-radius: 20px;    
+    font-size: 24px;
+    width: 300px; 
+    min-height: 240px; 
+    background-image: url("/assets/step.png");
+    background-size: 300px 300px;
+}
+.link{
+    text-decoration: none;
+    color: lightskyblue;
+    cursor: pointer;
 }

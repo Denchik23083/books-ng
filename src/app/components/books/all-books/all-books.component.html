@@ -1,11 +1,11 @@
 <h1>Books</h1>
 <button class="button" (click)="routeMain()">Main</button>
 <div class="flex">
-    <div *ngFor="let book of books" class="book" >
+    <div *ngFor="let book of books" class="book">
         <strong>Название:</strong><span (click)="details(book.id!)" class="link"> {{book.title}}</span><br>
         <strong>Автор:</strong> {{book.author}}<br>
         <strong>Страниц:</strong> {{book.pagesCount}}<br>
-        <strong>Дата:</strong> {{book.publishDate | date:'medium'}}<br>
+        <strong>Дата:</strong> {{book.publishDate | date}}<br>
 
         <button class="buttonUpdate" (click)="routeUpdate(book.id!)">Update</button>
         <button class="buttonRemove" (click)="remove(book.id!)">Remove</button>

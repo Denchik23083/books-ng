@@ -23,4 +23,7 @@ export class GetIdCategoriesComponent implements OnInit {
     this.router.navigate(['/categories']);
   }
 
+  details(id: number): void{ 
+    this.router.navigate(['/books', id]); 
+  }
 }

@@ -8,8 +8,7 @@
     <input [(ngModel)] = 'book.publishDate' type='date' name="publishDate" placeholder="publishDate"/>
     <select ngModel name="categoryId">
         <option value="" disabled>category</option>
-        <option *ngFor="let category of categories" [ngValue]="category.id">{{ category.description }}
-        </option>
+        <option *ngFor="let category of categories" [ngValue]="category.id">{{ category.description }}</option>
     </select>
     <button type='submit' class="button">Add</button>
 </form>

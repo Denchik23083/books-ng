@@ -4,7 +4,7 @@
     <strong>Название:</strong> {{book.title}}<br>
     <strong>Автор:</strong> {{book.author}}<br>
     <strong>Страниц:</strong> {{book.pagesCount}}<br>
-    <strong>Дата:</strong> {{book.publishDate | date:'medium'}}<br>
+    <strong>Дата:</strong> {{book.publishDate | date}}<br>
 </div>
 
 <form #form="ngForm" (ngSubmit)="submit(form)">
@@ -15,8 +15,7 @@
     <input [(ngModel)] = 'book.publishDate' type='date' name="publishDate" placeholder="publishDate"/>
     <select [(ngModel)] = 'book.categoryId' name="categoryId">
         <option value="" disabled>category</option>
-        <option *ngFor="let category of categories" [ngValue]="category.id">{{ category.description }}
-        </option>
+        <option *ngFor="let category of categories" [ngValue]="category.id">{{ category.description }}</option>
     </select>
     <button type='submit' class="button">Update</button>
 </form>

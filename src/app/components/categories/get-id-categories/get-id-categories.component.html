@@ -6,11 +6,11 @@
 
 <div *ngIf="category as category">
     <div class="flex">
-        <div *ngFor="let book of category.books" class="category" >
-            <strong>Название:</strong> {{book.title}}<br>
+        <div *ngFor="let book of category.books" class="book" >
+            <strong>Название:</strong><span (click)="details(book.id!)" class="link"> {{book.title}}</span><br>
             <strong>Автор:</strong> {{book.author}}<br>
             <strong>Страниц:</strong> {{book.pagesCount}}<br>
-            <strong>Дата:</strong> {{book.publishDate | date:'medium'}}<br>
+            <strong>Дата:</strong> {{book.publishDate | date}}<br>
         </div>
     </div>
 </div>
