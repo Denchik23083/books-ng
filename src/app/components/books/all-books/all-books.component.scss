@@ -1,22 +1,33 @@
-.button{
+.button, .buttonAdd, .buttonRemove, .buttonUpdate{
     width: 100px;
     height: 30px;
     margin: 10px 10px 10px 0px;
+    color: white;
+    border: none;
 }
-.button:hover{
-    cursor: pointer;
-}
+.button:hover, .buttonAdd:hover, .buttonRemove:hover, .buttonUpdate:hover{cursor: pointer;}
+.button {background-color: #337ab7;}
+.buttonAdd{background-color: #5cb85c;}
+.buttonRemove{background-color: red;}
+.buttonUpdate{background-color: #f0ad4e;}
 .link{
     text-decoration: none;
     color: lightskyblue;
     cursor: pointer;
 }
 .book{
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px 10px 10px 0px;
-    font-size: 20px;
+    background-color: white; 
+    margin: 20px;
+    margin-left: 0px;
+    text-align: center; 
+    padding-top: 50px; 
+    border: 0.1px solid grey; 
+    border-radius: 20px;    
+    font-size: 24px;
+    width: 300px; 
+    min-height: 240px; 
+    background-image: url("/assets/step.png");
+    background-size: 300px 300px;
 }
 .flex{
     display: flex;

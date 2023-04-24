@@ -7,8 +7,8 @@
         <strong>Страниц:</strong> {{book.pagesCount}}<br>
         <strong>Дата:</strong> {{book.publishDate | date:'medium'}}<br>
 
-        <button class="button" (click)="routeUpdate(book.id!)">Update</button>
-        <button class="button" (click)="remove(book.id!)">Remove</button>
+        <button class="buttonUpdate" (click)="routeUpdate(book.id!)">Update</button>
+        <button class="buttonRemove" (click)="remove(book.id!)">Remove</button>
     </div>
 </div>
-<button class="button" (click)="routeAdd()">Add</button>
+<button class="buttonAdd" (click)="routeAdd()">Add</button>
