@@ -2,14 +2,24 @@
     width: 100px;
     height: 30px;
     margin: 10px 10px 10px 0px;
+    color: white;
+    border: none;
+    border-radius: 10px;
 }
+.button{background-color: #337ab7;}
 .button:hover{
     cursor: pointer;
 }
 .bookId{
-    text-align: center;
-    border: 1px solid black;
-    border-radius: 10px;
     padding: 10px;
-    font-size: 20px;
+    background-color: white; 
+    text-align: center; 
+    padding-top: 50px; 
+    border: 0.1px solid grey; 
+    border-radius: 20px;    
+    font-size: 24px;
+    min-height: 240px; 
+    background-image: url("/assets/planet.jpg");
+    background-size: 100% 300px;
+    background-repeat: no-repeat;
 }

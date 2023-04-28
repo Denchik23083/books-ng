@@ -1,12 +1,22 @@
-.button{
+.button, .buttonAdd{
     width: 100px;
     height: 30px;
     margin: 10px 10px 10px 0px;
+    color: white;
+    border: none;
+    border-radius: 10px;
 }
-.button:hover{
+.button{background-color: #337ab7;}
+.buttonAdd{background-color: #5cb85c;}
+.button:hover, .buttonAdd:hover{
     cursor: pointer;
 }
 input, select{
     padding: 5px;
     margin: 10px 10px 10px 0px;
+    width: 250px;
+    font-size: 13px;
+    border: 1px solid #cecece;
+    background: #F6F6f6;
+    border-radius: 10px;
 }
